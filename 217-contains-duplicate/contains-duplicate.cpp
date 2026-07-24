@@ -1,15 +1,13 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-       set<int>st;
+       unordered_set<int>st;
        for(int x :nums){
-        st.insert(x);
+        if(!st.insert(x).second){
+            return true; 
+            }
        }
-
-       if(st.size()!=nums.size()){
-        return true;
-       }
-       else return false;
+       return false;
     }
 };
 //TC=nLOGn+N
