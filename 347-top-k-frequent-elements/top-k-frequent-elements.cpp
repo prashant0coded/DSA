@@ -6,14 +6,15 @@ public:
         for(int i=0;i<n;i++){
             mpp[nums[i]]++;
         }
-        vector<pair<int,int>>ans;
+        priority_queue<pair<int,int>>pq;
         for(auto it:mpp){
-            ans.push_back({it.second,it.first});
+           pq.push({it.second,it.first});
         }
-        sort(ans.rbegin(),ans.rend());
+
         vector<int>v;
-        for(int i=0;i<k;i++){
-            v.push_back(ans[i].second);
+       while(k--){
+            v.push_back(pq.top().second);
+            pq.pop();
         }
         return v;
 
