@@ -6,17 +6,20 @@ public:
         for(int i=0;i<n;i++){
             mpp[nums[i]]++;
         }
-        priority_queue<pair<int,int>>pq;
+        vector<vector<int>>bucket(n+1);
         for(auto it:mpp){
-           pq.push({it.second,it.first});
+           bucket[it.second].push_back(it.first);
         }
 
-        vector<int>v;
-       while(k--){
-            v.push_back(pq.top().second);
-            pq.pop();
+       vector<int>ans;
+       for(int i=n; i>=1 && ans.size()<k ;i--){
+           for(int x : bucket[i]){
+                ans.push_back(x);
+                if(ans.size() == k)
+                    break;
+            }
         }
-        return v;
+        return ans;
 
         
     }
