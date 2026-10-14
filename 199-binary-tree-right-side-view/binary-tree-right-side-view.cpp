@@ -22,6 +22,5 @@ void reversePreorder(TreeNode*node,int level,vector<int>&ans){
         vector<int>ans;
         reversePreorder(node,0,ans);
         return ans;
-        
     }
 };
